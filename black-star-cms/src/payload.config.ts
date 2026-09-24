@@ -52,7 +52,6 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  
   // Use the dynamic variable here
   serverURL: serverURL,
 
@@ -60,7 +59,6 @@ export default buildConfig({
   cors: allowedOrigins,
 
   csrf: csrfOrigins,
-  
   collections: [Users, Media, Issues, Sections, Pieces, AfricanSun],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
@@ -83,9 +81,9 @@ export default buildConfig({
   plugins: [
     s3Storage({
       collections: {
-        // This tells Payload to send all 'media' uploads to Cloudflare
-        'media': true, 
+        media: true,
       },
+      clientUploads: true,
       bucket: process.env.S3_BUCKET || '',
       config: {
         credentials: {
